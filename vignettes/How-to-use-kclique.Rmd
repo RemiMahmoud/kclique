@@ -1,0 +1,56 @@
+---
+title: "How-to-use-kclique"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{How-to-use-kclique}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+
+library(kclique)
+```
+
+```{r}
+
+data("data_example", package ="kclique")
+
+adj_matrix <- get_adjacency_matrix_from_dat(data_example)
+
+library(igraph)
+library(tidygraph)
+graph_example <- adj_matrix %>% igraph::graph_from_adjacency_matrix(mode = "undirected")
+
+
+
+
+# names_mixing_pattern <- unique(dat$mixing_pattern)
+# 
+# tbl_three_partite_graph <- three_partite_graph %>%
+#   as_tbl_graph %>% 
+#     activate(nodes) %>%
+#     mutate(kpartite = case_when(.N()$name %in% names_cultivar ~ "cultivar",
+#                                 .N()$name %in% names_mixing_pattern ~ "mixing_pattern",
+#                                 .N()$name %in% names_xp ~ "xp"
+#                                 )) 
+# 
+# tbl_three_partite_graph %>% 
+#     ggraph(layout = 'in_circle', ) +
+#     # ggraph(layout = 'manual',x = coords$x, y= coords$y, circular= FALSE ) +
+#     geom_edge_link(aes()) +
+#     geom_node_point(size = 10, aes(colour = kpartite)) +
+#     geom_node_text(aes(label = name), colour = 'black', vjust = 0.4) 
+
+
+
+kcliques_example <- kclique::maximal_kclique_enumeration(graph_example, data_example)
+```
+
