@@ -10,9 +10,13 @@ Depends:
     R (>= 4.0.0)
 Imports: 
     dplyr,
+    ggplot2,
+    ggraph,
     igraph,
     magrittr,
     stringr,
+    tibble,
+    tidygraph,
     utils
 Suggests: 
     knitr,

@@ -2,8 +2,7 @@
 % Please edit documentation in R/list_kcliques.R
 \name{enumerate}
 \alias{enumerate}
-\title{Enumerate the cliques of a graph
-check if a set covers a partition, that is: "it contains at least one element from each cell of the partition"}
+\title{Enumerate the cliques of a graph}
 \usage{
 enumerate(G, R, P, X, partition, cliques_discovered)
 }
@@ -24,6 +23,5 @@ enumerate(G, R, P, X, partition, cliques_discovered)
 A logical: TRUE if the set covers the partition and FALSE if not
 }
 \description{
-Enumerate the cliques of a graph
-check if a set covers a partition, that is: "it contains at least one element from each cell of the partition"
+Sub Routine enumerate described in \url{doi:10.3390/a12010023}.
 }

@@ -9,7 +9,7 @@ maximal_kclique_enumeration(G, dat)
 \arguments{
 \item{G}{a k-partite graph, from class graph (package igraph).}
 
-\item{dat}{a datasets with multiple columns, each column containing each factor composing the k sets of the G}
+\item{dat}{a dataset with multiple columns, each column containing each factor composing the k sets of the G}
 }
 \value{
 A character vector containing all maximal kcliques ; each element of the vector is a maximal kclique ; each member of each clique is separated by a ";"

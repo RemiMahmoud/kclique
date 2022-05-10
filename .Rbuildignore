@@ -1,3 +1,4 @@
 ^kclique\.Rproj$
 ^\.Rproj\.user$
 ^dev_history\.R$
+^data-raw$

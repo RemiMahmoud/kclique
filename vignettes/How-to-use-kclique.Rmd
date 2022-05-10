@@ -17,40 +17,69 @@ knitr::opts_chunk$set(
 ```{r setup}
 
 library(kclique)
+library(dplyr)
+        
+library(igraph)
+library(tidygraph)
 ```
+
+
+# Load toy data
 
 ```{r}
 
 data("data_example", package ="kclique")
 
+knitr::kable(head(data_example))
+```
+
+As an example, imagine a set of three factors, with various modalities and combinations of modalities. You can represent the co-occurence of the modalities by a graph.
+
+
+# Set graph
+
+```{r}
+# compute adjacency_matrix
 adj_matrix <- get_adjacency_matrix_from_dat(data_example)
 
-library(igraph)
-library(tidygraph)
+#compute the associated graph
 graph_example <- adj_matrix %>% igraph::graph_from_adjacency_matrix(mode = "undirected")
 
-
-
-
-# names_mixing_pattern <- unique(dat$mixing_pattern)
-# 
-# tbl_three_partite_graph <- three_partite_graph %>%
-#   as_tbl_graph %>% 
-#     activate(nodes) %>%
-#     mutate(kpartite = case_when(.N()$name %in% names_cultivar ~ "cultivar",
-#                                 .N()$name %in% names_mixing_pattern ~ "mixing_pattern",
-#                                 .N()$name %in% names_xp ~ "xp"
-#                                 )) 
-# 
-# tbl_three_partite_graph %>% 
-#     ggraph(layout = 'in_circle', ) +
-#     # ggraph(layout = 'manual',x = coords$x, y= coords$y, circular= FALSE ) +
-#     geom_edge_link(aes()) +
-#     geom_node_point(size = 10, aes(colour = kpartite)) +
-#     geom_node_text(aes(label = name), colour = 'black', vjust = 0.4) 
-
-
-
-kcliques_example <- kclique::maximal_kclique_enumeration(graph_example, data_example)
 ```
+
+# Plot data
+
+We can plot the graph, using one color for each factor
+```{r}
+plot_graph_example <- plot_graph(G = graph_example, dat = data_example)
+plot_graph_example
+```
+
+
+# List maximal kcliques
+
+If we want to look for all the maximal complete factorial design, we need to enumerate all the maximal kcliques present in the graph.
+
+```{r}
+kcliques_example <- kclique::maximal_kclique_enumeration(graph_example, data_example)
+
+knitr::kable(kcliques_example)
+```
+
+# Format kclique in a nice output format
+
+
+
+```{r}
+tibble_kclique <- function_list_kcliques_to_tibble(kcliques_example, data_example)
+
+knitr::kable(tibble_kclique)
+
+```
+
+We identified 9 maximal kcliques, involving various combinations of factors' modalities.
+
+
+
+
 

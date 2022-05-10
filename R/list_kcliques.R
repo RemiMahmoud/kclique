@@ -3,7 +3,7 @@
 #' the algorithms used come from this paper Phillips et al. <doi:10.3390/a12010023>.
 #'
 #' @param G a k-partite graph, from class graph (package igraph).
-#' @param dat a datasets with multiple columns, each column containing each factor composing the k sets of the G
+#' @param dat a dataset with multiple columns, each column containing each factor composing the k sets of the G
 
 #' @return A character vector containing all maximal kcliques ; each element of the vector is a maximal kclique ; each member of each clique is separated by a ";"
 #' @import magrittr
@@ -12,7 +12,7 @@
 #' @export
 #'
 maximal_kclique_enumeration <- function(G, dat){
-
+  #References to line correspond to the article of Philips et al. 2019 <doi:10.3390/a12010023>.
 
   adj_matrix_G_with_intrapartite <- G %>% get.adjacency() %>% as.matrix
   factors <- colnames(dat)
@@ -72,7 +72,7 @@ covers <- function(set, partition){
 
 
 #' Enumerate the cliques of a graph
-#' check if a set covers a partition, that is: "it contains at least one element from each cell of the partition"
+#' @description Sub Routine enumerate described in <doi:10.3390/a12010023>.
 #'
 #' @param G a k-partite graph, from class graph (package igraph).
 #' @param R character vector containing the current clique
@@ -117,3 +117,48 @@ enumerate <- function(G, R, P, X, partition, cliques_discovered){
   return(cliques_discovered)
 }
 
+
+
+
+#' From a string containing the kcliques, detects to which set each node belongs
+#'
+#' @param string_input input a character vector containing members of the kcliques
+#' @param dat a dataset with multiple columns, each column containing each factor composing the k sets of the G
+#' @param sep separator between node names
+#'
+#' @importFrom  stringr str_split str_remove
+#' @importFrom tibble as_tibble
+#' @importFrom dplyr mutate across everything
+#'
+function_detect_belonging <- function(string_input, dat, sep =";" ){
+
+  factors <- colnames(dat)
+  number_factors <- length(factors)
+
+  # data_output <- as.data.frame(matrix(character(0), nrow = 1, ncol = number_factors, dimnames = list(NULL ,factors)))
+  data_output <- as_tibble(matrix(character(0), nrow = 1, ncol = number_factors, dimnames = list(NULL ,factors)))
+
+  list_modalities_factor <- lapply(dat, unique)
+  string_input_splitted <- sort(stringr::str_split(string_input, pattern = sep)[[1]])
+
+
+  for(s in string_input_splitted){
+    ind_s <- which(sapply(list_modalities_factor, function(x) s %in% x))
+    data_output[1,ind_s] <- paste( s, data_output[,ind_s], sep = "-")
+  }
+
+  return(data_output %>% mutate(across(.cols = everything() , ~stringr::str_remove(.x, "-NA"))))
+
+
+}
+
+#' @title  Return formatted data from a kclique object
+#'
+#' @param  kcliques output of maximal_kclique_enumeration function
+#' @param dat a dataset with multiple columns, each column containing each factor composing the k sets of the G
+#' @importFrom  dplyr bind_rows
+#' @export
+
+function_list_kcliques_to_tibble <- function(kcliques, dat){
+  return(bind_rows(lapply(c(kcliques), function_detect_belonging, dat = dat )))
+}
