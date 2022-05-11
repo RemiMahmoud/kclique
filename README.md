@@ -17,71 +17,6 @@ You can install the development version of kclique from
 ``` r
 # install.packages("devtools")
 devtools::install_github("RemiMahmoud/kclique")
-#> Downloading GitHub repo RemiMahmoud/kclique@HEAD
-#> utf8         (1.2.1       -> 1.2.2     ) [CRAN]
-#> crayon       (1.5.0       -> 1.5.1     ) [CRAN]
-#> fansi        (0.5.0       -> 1.0.3     ) [CRAN]
-#> vctrs        (0.3.8       -> 0.4.1     ) [CRAN]
-#> tidyselect   (1.1.1       -> 1.1.2     ) [CRAN]
-#> tibble       (3.1.2       -> 3.1.7     ) [CRAN]
-#> magrittr     (2.0.1       -> 2.0.3     ) [CRAN]
-#> dplyr        (1.0.6       -> 1.0.9     ) [CRAN]
-#> RcppArmad... (0.9.860.2.0 -> 0.11.0.0.0) [CRAN]
-#> Rcpp         (1.0.7       -> 1.0.8.3   ) [CRAN]
-#> igraph       (1.3.0       -> 1.3.1     ) [CRAN]
-#> tidyr        (1.1.3       -> 1.2.0     ) [CRAN]
-#> colorspace   (2.0-1       -> 2.0-3     ) [CRAN]
-#> RColorBrewer (1.1-2       -> 1.1-3     ) [CRAN]
-#> withr        (2.4.3       -> 2.5.0     ) [CRAN]
-#> scales       (1.1.1       -> 1.2.0     ) [CRAN]
-#> digest       (0.6.27      -> 0.6.29    ) [CRAN]
-#> ggplot2      (3.3.3       -> 3.3.6     ) [CRAN]
-#> RcppEigen    (0.3.3.7.0   -> 0.3.3.9.2 ) [CRAN]
-#> tweenr       (1.0.1       -> 1.0.2     ) [CRAN]
-#> stringi      (1.6.2       -> 1.7.6     ) [CRAN]
-#> viridis      (0.5.1       -> 0.6.2     ) [CRAN]
-#> ggrepel      (0.8.2       -> 0.9.1     ) [CRAN]
-#> ggforce      (0.3.1       -> 0.3.3     ) [CRAN]
-#> Installing 24 packages: utf8, crayon, fansi, vctrs, tidyselect, tibble, magrittr, dplyr, RcppArmadillo, Rcpp, igraph, tidyr, colorspace, RColorBrewer, withr, scales, digest, ggplot2, RcppEigen, tweenr, stringi, viridis, ggrepel, ggforce
-#> Installation des packages dans 'C:/Users/rmahmoud/AppData/Local/Temp/RtmpIfeWpI/temp_libpath31d839df4832'
-#> (car 'lib' n'est pas spécifié)
-#> package 'utf8' successfully unpacked and MD5 sums checked
-#> package 'crayon' successfully unpacked and MD5 sums checked
-#> package 'fansi' successfully unpacked and MD5 sums checked
-#> package 'vctrs' successfully unpacked and MD5 sums checked
-#> package 'tidyselect' successfully unpacked and MD5 sums checked
-#> package 'tibble' successfully unpacked and MD5 sums checked
-#> package 'magrittr' successfully unpacked and MD5 sums checked
-#> package 'dplyr' successfully unpacked and MD5 sums checked
-#> package 'RcppArmadillo' successfully unpacked and MD5 sums checked
-#> package 'Rcpp' successfully unpacked and MD5 sums checked
-#> package 'igraph' successfully unpacked and MD5 sums checked
-#> package 'tidyr' successfully unpacked and MD5 sums checked
-#> package 'colorspace' successfully unpacked and MD5 sums checked
-#> package 'RColorBrewer' successfully unpacked and MD5 sums checked
-#> package 'withr' successfully unpacked and MD5 sums checked
-#> package 'scales' successfully unpacked and MD5 sums checked
-#> package 'digest' successfully unpacked and MD5 sums checked
-#> package 'ggplot2' successfully unpacked and MD5 sums checked
-#> package 'RcppEigen' successfully unpacked and MD5 sums checked
-#> package 'tweenr' successfully unpacked and MD5 sums checked
-#> package 'stringi' successfully unpacked and MD5 sums checked
-#> package 'viridis' successfully unpacked and MD5 sums checked
-#> package 'ggrepel' successfully unpacked and MD5 sums checked
-#> package 'ggforce' successfully unpacked and MD5 sums checked
-#> 
-#> The downloaded binary packages are in
-#>  C:\Users\rmahmoud\AppData\Local\Temp\Rtmp6rhewG\downloaded_packages
-#>          checking for file 'C:\Users\rmahmoud\AppData\Local\Temp\Rtmp6rhewG\remotes28b4182d5707\RemiMahmoud-kclique-b974aba/DESCRIPTION' ...     checking for file 'C:\Users\rmahmoud\AppData\Local\Temp\Rtmp6rhewG\remotes28b4182d5707\RemiMahmoud-kclique-b974aba/DESCRIPTION' ...   v  checking for file 'C:\Users\rmahmoud\AppData\Local\Temp\Rtmp6rhewG\remotes28b4182d5707\RemiMahmoud-kclique-b974aba/DESCRIPTION' (651ms)
-#>       -  preparing 'kclique':
-#>    checking DESCRIPTION meta-information ...     checking DESCRIPTION meta-information ...   v  checking DESCRIPTION meta-information
-#>       -  checking for LF line-endings in source and make files and shell scripts
-#>       -  checking for empty or unneeded directories
-#>       -  building 'kclique_0.0.0.9000.tar.gz'
-#>      
-#> 
-#> Installation du package dans 'C:/Users/rmahmoud/AppData/Local/Temp/RtmpIfeWpI/temp_libpath31d839df4832'
-#> (car 'lib' n'est pas spécifié)
 ```
 
 ## Example
@@ -92,39 +27,9 @@ This is a basic example which shows you how to solve a common problem:
 library(kclique)
 
 # Other packages needed
-library(dplyr)
-#> Warning: le package 'dplyr' a été compilé avec la version R 4.1.3
-#> 
-#> Attachement du package : 'dplyr'
-#> Les objets suivants sont masqués depuis 'package:stats':
-#> 
-#>     filter, lag
-#> Les objets suivants sont masqués depuis 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
-library(igraph)
-#> Warning: le package 'igraph' a été compilé avec la version R 4.1.3
-#> 
-#> Attachement du package : 'igraph'
-#> Les objets suivants sont masqués depuis 'package:dplyr':
-#> 
-#>     as_data_frame, groups, union
-#> Les objets suivants sont masqués depuis 'package:stats':
-#> 
-#>     decompose, spectrum
-#> L'objet suivant est masqué depuis 'package:base':
-#> 
-#>     union
-library(tidygraph)
-#> Warning: le package 'tidygraph' a été compilé avec la version R 4.1.3
-#> 
-#> Attachement du package : 'tidygraph'
-#> L'objet suivant est masqué depuis 'package:igraph':
-#> 
-#>     groups
-#> L'objet suivant est masqué depuis 'package:stats':
-#> 
-#>     filter
+library(dplyr, warn.conflicts = FALSE)
+library(igraph, warn.conflicts = FALSE)
+library(tidygraph, warn.conflicts = FALSE)
 ## basic example code
 ```
 
@@ -178,10 +83,10 @@ need to enumerate all the maximal kcliques present in the graph.
 ``` r
 kcliques_example <- kclique::maximal_kclique_enumeration(graph_example, data_example)
 
-knitr::kable(kcliques_example)
+knitr::kable(kcliques_example,col.names = "List of kcliques")
 ```
 
-| x                                          |
+| List of kcliques                           |
 |:-------------------------------------------|
 | B1;C01;C03;C11;C07;C10;A14                 |
 | B1;C01;C03;C11;C07;A09;A14                 |

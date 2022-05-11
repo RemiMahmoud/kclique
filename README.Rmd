@@ -24,7 +24,7 @@ The goal of kclique is to enumerate all maximal kcliques within a k-partite grap
 
 You can install the development version of kclique from [GitHub](https://github.com/) with:
 
-```{r install package}
+```{r install package, eval = FALSE}
 # install.packages("devtools")
 devtools::install_github("RemiMahmoud/kclique")
 ```
@@ -33,13 +33,13 @@ devtools::install_github("RemiMahmoud/kclique")
 
 This is a basic example which shows you how to solve a common problem:
 
-```{r example}
+```{r example, message=FALSE, warning=FALSE}
 library(kclique)
 
 # Other packages needed
-library(dplyr)
-library(igraph)
-library(tidygraph)
+library(dplyr, warn.conflicts = FALSE)
+library(igraph, warn.conflicts = FALSE)
+library(tidygraph, warn.conflicts = FALSE)
 ## basic example code
 ```
 
@@ -84,7 +84,7 @@ If we want to look for all the maximal complete factorial design, we need to enu
 ```{r}
 kcliques_example <- kclique::maximal_kclique_enumeration(graph_example, data_example)
 
-knitr::kable(kcliques_example)
+knitr::kable(kcliques_example,col.names = "List of kcliques")
 ```
 
 ### Format kclique in a nice output format
