@@ -39,12 +39,7 @@ As an example, imagine a set of three factors, with various modalities and combi
 # Set graph
 
 ```{r}
-# compute adjacency_matrix
-adj_matrix <- get_adjacency_matrix_from_dat(data_example)
-
-#compute the associated graph
-graph_example <- adj_matrix %>% igraph::graph_from_adjacency_matrix(mode = "undirected")
-
+graph_example <- get_graph_from_dat(data_example)
 ```
 
 # Plot data

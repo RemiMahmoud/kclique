@@ -1,3 +1,19 @@
+
+#' @title Compute graph from matrix with factors as columns
+#' @description Get the graph linked to a table where each line represents a combination of factors
+
+#' @param dat a dataset with multiple columns, each column containing each factor composing the k sets of the G
+#' @import magrittr
+#' @importFrom igraph graph_from_adjacency_matrix
+#' @return a k-partite graph, from class graph (package igraph).
+#' @export
+
+get_graph_from_dat <- function(dat){
+
+  G <- graph_from_adjacency_matrix(adjmatrix = get_adjacency_matrix_from_dat(dat), mode = "undirected")
+  return(G)
+}
+
 #' @title Compute adjacency matrix from matrix with factors as columns
 #' @description Get the adjacency matrix linked to a table where each line represents a combination of factors
 
@@ -5,7 +21,6 @@
 #' @import magrittr
 #' @importFrom dplyr distinct select
 #' @importFrom igraph graph.edgelist get.adjacency
-#' @export
 #' @importFrom utils combn
 #'
 get_adjacency_matrix_from_dat <- function(dat){

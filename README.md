@@ -57,11 +57,8 @@ the modalities by a graph.
 ### Set graph
 
 ``` r
-# compute adjacency_matrix
-adj_matrix <- get_adjacency_matrix_from_dat(data_example)
-
-#compute the associated graph
-graph_example <- adj_matrix %>% igraph::graph_from_adjacency_matrix(mode = "undirected")
+# get graph from the data
+graph_example <- get_graph_from_dat(data_example)
 ```
 
 ### Plot data
