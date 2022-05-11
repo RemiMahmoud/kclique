@@ -22,13 +22,16 @@ data_example <- structure(list(factor_A = c("A02", "A15", "A04", "A01", "A11",
 "tbl", "data.frame"))
 usethis::use_data(data_example, overwrite = TRUE)
 
-# ?usethis::use_data()
 usethis::use_r("data.R")
 
+usethis::use_r("plot_kcliques.R")
 
 attachment::att_to_description()
+devtools::document()
+
 
 usethis::use_r("plot_graph.R")
+usethis::use_r("plot_kcliques.R")
 
 usethis::use_readme_rmd()
 devtools::build_readme()

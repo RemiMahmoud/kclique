@@ -39,8 +39,7 @@ library(kclique)
 # Other packages needed
 library(dplyr, warn.conflicts = FALSE)
 library(igraph, warn.conflicts = FALSE)
-library(tidygraph, warn.conflicts = FALSE)
-## basic example code
+
 ```
 
 
@@ -95,6 +94,22 @@ knitr::kable(tibble_kclique)
 ```
 
 We identified 9 maximal kcliques, involving various combinations of factors' modalities.
+
+### Highlight a kclique
+
+
+
+```{r}
+plot_kclique_1 <- plot_kclique(G = graph_example, dataset = data_example, tibble_kcliques = tibble_kclique, vector_kcliques = 1)
+plot_kclique_1
+
+plot_kclique_3 <- plot_kclique(G = graph_example, dataset = data_example, tibble_kcliques = tibble_kclique, vector_kcliques = 3)
+plot_kclique_3
+# plot_graph_example
+
+```
+
+<!-- We identified 9 maximal kcliques, involving various combinations of factors' modalities. -->
 
 
 

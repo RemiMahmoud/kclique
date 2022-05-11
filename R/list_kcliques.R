@@ -126,7 +126,7 @@ enumerate <- function(G, R, P, X, partition, cliques_discovered){
 #' @param dat a dataset with multiple columns, each column containing each factor composing the k sets of the G
 #' @param sep separator between node names
 #'
-#' @importFrom  stringr str_split str_remove
+#' @importFrom stringr str_split str_remove
 #' @importFrom tibble as_tibble
 #' @importFrom dplyr mutate across everything
 #'

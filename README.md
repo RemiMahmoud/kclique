@@ -29,8 +29,6 @@ library(kclique)
 # Other packages needed
 library(dplyr, warn.conflicts = FALSE)
 library(igraph, warn.conflicts = FALSE)
-library(tidygraph, warn.conflicts = FALSE)
-## basic example code
 ```
 
 ### Load toy data
@@ -118,6 +116,27 @@ knitr::kable(tibble_kclique)
 We identified 9 maximal kcliques, involving various combinations of
 factors’ modalities.
 
+### Highlight a kclique
+
+``` r
+plot_kclique_1 <- plot_kclique(G = graph_example, dataset = data_example, tibble_kcliques = tibble_kclique, vector_kcliques = 1)
+plot_kclique_1
+```
+
+<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />
+
+``` r
+plot_kclique_3 <- plot_kclique(G = graph_example, dataset = data_example, tibble_kcliques = tibble_kclique, vector_kcliques = 3)
+plot_kclique_3
+```
+
+<img src="man/figures/README-unnamed-chunk-7-2.png" width="100%" />
+
+``` r
+# plot_graph_example
+```
+
+<!-- We identified 9 maximal kcliques, involving various combinations of factors' modalities. -->
 <!-- You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. You could also use GitHub Actions to re-render `README.Rmd` every time you push. An example workflow can be found here: <https://github.com/r-lib/actions/tree/v1/examples>. -->
 <!-- You can also embed plots, for example: -->
 <!-- In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN. -->
