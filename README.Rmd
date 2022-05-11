@@ -1,0 +1,119 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# kclique
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of kclique is to enumerate all maximal kcliques within a k-partite graph.
+
+## Installation
+
+You can install the development version of kclique from [GitHub](https://github.com/) with:
+
+```{r install package}
+# install.packages("devtools")
+devtools::install_github("RemiMahmoud/kclique")
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+```{r example}
+library(kclique)
+
+# Other packages needed
+library(dplyr)
+library(igraph)
+library(tidygraph)
+## basic example code
+```
+
+
+
+### Load toy data
+
+```{r}
+
+data("data_example", package ="kclique")
+
+knitr::kable(head(data_example))
+```
+
+As an example, imagine a set of three factors, with various modalities and combinations of modalities. You can represent the co-occurence of the modalities by a graph.
+
+
+### Set graph
+
+```{r}
+# compute adjacency_matrix
+adj_matrix <- get_adjacency_matrix_from_dat(data_example)
+
+#compute the associated graph
+graph_example <- adj_matrix %>% igraph::graph_from_adjacency_matrix(mode = "undirected")
+
+```
+
+### Plot data
+
+We can plot the graph, using one color for each factor
+```{r}
+plot_graph_example <- plot_graph(G = graph_example, dat = data_example)
+plot_graph_example
+```
+
+
+### List maximal kcliques
+
+If we want to look for all the maximal complete factorial design, we need to enumerate all the maximal kcliques present in the graph.
+
+```{r}
+kcliques_example <- kclique::maximal_kclique_enumeration(graph_example, data_example)
+
+knitr::kable(kcliques_example)
+```
+
+### Format kclique in a nice output format
+
+
+
+```{r}
+tibble_kclique <- function_list_kcliques_to_tibble(kcliques_example, data_example)
+
+knitr::kable(tibble_kclique)
+
+```
+
+We identified 9 maximal kcliques, involving various combinations of factors' modalities.
+
+
+
+
+
+```{r cars, echo = FALSE}
+# summary(cars)
+```
+
+<!-- You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. You could also use GitHub Actions to re-render `README.Rmd` every time you push. An example workflow can be found here: <https://github.com/r-lib/actions/tree/v1/examples>. -->
+
+<!-- You can also embed plots, for example: -->
+
+```{r pressure, echo = FALSE}
+# plot(pressure)
+```
+
+<!-- In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN. -->

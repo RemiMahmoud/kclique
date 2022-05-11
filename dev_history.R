@@ -29,3 +29,6 @@ usethis::use_r("data.R")
 attachment::att_to_description()
 
 usethis::use_r("plot_graph.R")
+
+usethis::use_readme_rmd()
+devtools::build_readme()
