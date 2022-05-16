@@ -152,13 +152,49 @@ function_detect_belonging <- function(string_input, dat, sep =";" ){
 
 }
 
-#' @title  Return formatted data from a kclique object
+#' @title  Formatted data from a kclique object
 #'
 #' @param  kcliques output of maximal_kclique_enumeration function
-#' @param dat a dataset with multiple columns, each column containing each factor composing the k sets of the G
-#' @importFrom  dplyr bind_rows
+#' @param dat a sorted dataset with multiple columns, each column containing each factor composing the k sets of the G. Rows are sorted according to the total members in the kclique
+#' @param arrange_by_n_members a logical indicating if the data has to be returned arranged by decreasing number of kclique members
+#' @importFrom  dplyr bind_rows select desc arrange
 #' @export
 
-function_list_kcliques_to_tibble <- function(kcliques, dat){
-  return(bind_rows(lapply(c(kcliques), function_detect_belonging, dat = dat )))
+function_list_kcliques_to_tibble <- function(kcliques, dat,  arrange_by_n_members = TRUE){
+
+  n <- NULL
+
+  tibble_output <-bind_rows(lapply(c(kcliques), function_detect_belonging, dat = dat ))
+  tibble_arranged <- function_count_members_from_tibble(tibble_output) %>%
+    arrange(desc(n)) %>%
+    select(-n)
+  return(tibble_arranged)
+}
+
+
+
+
+#' @title  Function to arrange rows by number of members of the kclique
+#'
+#' @param  tibble_k_clique output of function_list_kcliques_to_tibble function
+#' @param columns_to_select Columns to for which the number of members has to be counted, can be a character vector or some selection helper (like everything() or last_col())
+#' @param sep the separator used to separate kclique members in the input tibble
+#' @importFrom  dplyr any_of rowwise mutate ungroup
+#' @importFrom tidyr unite
+#' @export
+function_count_members_from_tibble <- function(tibble_k_clique, columns_to_select = everything(), sep = "-"){
+
+  n <- NULL
+  united_column <- NULL
+
+  tibble_arranged <- tibble_k_clique %>%
+    unite("united_column", any_of(columns_to_select), remove = FALSE, sep = sep) %>%
+    rowwise %>%
+    mutate(n = length(stringr::str_split(united_column, pattern = sep)[[1]]) )%>%
+    ungroup %>%
+    # arrange(desc(n)) %>%
+    select(-c( united_column))
+
+
+  return(tibble_arranged)
 }

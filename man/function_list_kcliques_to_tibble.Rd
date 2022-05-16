@@ -2,15 +2,17 @@
 % Please edit documentation in R/list_kcliques.R
 \name{function_list_kcliques_to_tibble}
 \alias{function_list_kcliques_to_tibble}
-\title{Return formatted data from a kclique object}
+\title{Formatted data from a kclique object}
 \usage{
-function_list_kcliques_to_tibble(kcliques, dat)
+function_list_kcliques_to_tibble(kcliques, dat, arrange_by_n_members = TRUE)
 }
 \arguments{
 \item{kcliques}{output of maximal_kclique_enumeration function}
 
-\item{dat}{a dataset with multiple columns, each column containing each factor composing the k sets of the G}
+\item{dat}{a sorted dataset with multiple columns, each column containing each factor composing the k sets of the G. Rows are sorted according to the total members in the kclique}
+
+\item{arrange_by_n_members}{a logical indicating if the data has to be returned arranged by decreasing number of kclique members}
 }
 \description{
-Return formatted data from a kclique object
+Formatted data from a kclique object
 }

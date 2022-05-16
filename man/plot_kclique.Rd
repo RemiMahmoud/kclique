@@ -13,7 +13,8 @@ plot_kclique(
   show_legend_edges = FALSE,
   color_edge_kclique = "black",
   color_edge_no_kclique = "grey75",
-  layout_name = "in_circle"
+  layout_name = "in_circle",
+  size_text = 3.5
 )
 }
 \arguments{
@@ -34,6 +35,8 @@ plot_kclique(
 \item{color_edge_no_kclique}{a string indicating the color of the edges that are not members of the kclique}
 
 \item{layout_name}{The type of layout to create. Either a valid string, a function, a matrix, or a data.frame (see help(ggraph::ggraph))}
+
+\item{size_text}{a numeric passed to the size argument of function geom_node_text, default 3.5}
 }
 \value{
 An object of class ggraph::gg onto which layers, scales,

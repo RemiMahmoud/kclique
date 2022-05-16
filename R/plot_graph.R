@@ -91,6 +91,7 @@ function_assign_node_to_partite <- function(node_names, dat){
 #' @param show_legend_edges a logical telling if the edges' color legend has to be shown
 #' @param color_edge_kclique a string indicating the color of the edges members of the kclique
 #' @param color_edge_no_kclique a string indicating the color of the edges that are not members of the kclique
+#' @param size_text a numeric passed to the size argument of function geom_node_text, default 3.5
 #'
 #'
 
@@ -107,7 +108,8 @@ function_assign_node_to_partite <- function(node_names, dat){
 plot_kclique <- function(G, tibble_kcliques, dataset, vector_kcliques = 1,
                              automatic_nodes = TRUE, show_legend_edges = FALSE,
                              color_edge_kclique = "black", color_edge_no_kclique = "grey75",
-                             layout_name = "in_circle"){
+                             layout_name = "in_circle",
+                         size_text = 3.5){
 
   if(length(vector_kcliques) > 1){stop("for now only possible to plot one kclique (i.e provide vector_kcliques of length 1)")}
 
@@ -153,12 +155,12 @@ plot_kclique <- function(G, tibble_kcliques, dataset, vector_kcliques = 1,
     if(automatic_nodes){
       plot_kclique <- plot_kclique +
       geom_node_point(size = 10, aes(color = variable))+
-      geom_node_text(aes(label = name), colour = 'black', vjust = 0.4, size = 3.5) +
+      geom_node_text(aes(label = name), colour = 'black', vjust = 0.4, size = size_text) +
       theme(legend.position = "bottom")}
     else{
         plot_kclique <- plot_kclique +
         geom_node_point(size = 10, color = "lightblue")+
-        geom_node_text(aes(label = name), colour = 'black', vjust = 0.4, size = 3.5) +
+        geom_node_text(aes(label = name), colour = 'black', vjust = 0.4, size = size_text) +
         theme(legend.position = "bottom") }
 
 

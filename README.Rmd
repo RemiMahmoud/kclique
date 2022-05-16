@@ -109,6 +109,8 @@ plot_kclique_3
 
 ```
 
+
+
 <!-- We identified 9 maximal kcliques, involving various combinations of factors' modalities. -->
 
 

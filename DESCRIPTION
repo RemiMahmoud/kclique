@@ -17,6 +17,7 @@ Imports:
     stringr,
     tibble,
     tidygraph,
+    tidyr,
     utils
 Suggests: 
     knitr,

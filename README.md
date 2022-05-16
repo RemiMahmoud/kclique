@@ -103,14 +103,14 @@ knitr::kable(tibble_kclique)
 
 | factor\_A                           | factor\_B | factor\_C           |
 |:------------------------------------|:----------|:--------------------|
+| A15-A14-A13-A11-A09-A05-A04-A02-A01 | B1        | C01                 |
 | A14                                 | B1        | C11-C10-C07-C03-C01 |
 | A14-A09                             | B1        | C11-C07-C03-C01     |
 | A05                                 | B1        | C08-C06-C02-C01     |
-| A15-A14-A13-A11-A09-A05-A04-A02-A01 | B1        | C01                 |
 | A10-A03                             | B1        | C11-C09-C05         |
 | A14-A10-A09-A03                     | B1        | C11                 |
-| A12                                 | B1        | C12-C04             |
 | A14-A09-A07                         | B1        | C03                 |
+| A12                                 | B1        | C12-C04             |
 | A08-A06                             | B2        | C01                 |
 
 We identified 9 maximal kcliques, involving various combinations of
