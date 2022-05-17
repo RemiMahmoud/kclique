@@ -4,7 +4,7 @@
 \alias{plot_graph}
 \title{Plot multipartite graph}
 \usage{
-plot_graph(G, dat, layout_name = "in_circle")
+plot_graph(G, dat, layout_name = "in_circle", size_text = 3.5)
 }
 \arguments{
 \item{G}{a k-partite graph, from class graph (package igraph).}
@@ -12,6 +12,8 @@ plot_graph(G, dat, layout_name = "in_circle")
 \item{dat}{a datasets with multiple columns, each column containing each factor composing the k sets of the G}
 
 \item{layout_name}{The type of layout to create. Either a valid string, a function, a matrix, or a data.frame (see help(ggraph::ggraph))}
+
+\item{size_text}{a numeric passed to the size argument of function geom_node_text, default 3.5}
 }
 \value{
 An object of class ggraph::gg onto which layers, scales,
