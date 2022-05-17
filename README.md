@@ -28,7 +28,6 @@ library(kclique)
 
 # Other packages needed
 library(dplyr, warn.conflicts = FALSE)
-library(igraph, warn.conflicts = FALSE)
 ```
 
 ### Load toy data
