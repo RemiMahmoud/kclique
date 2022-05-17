@@ -8,6 +8,8 @@
 #' @param dat a datasets with multiple columns, each column containing each factor composing the k sets of the G
 #' @param layout_name The type of layout to create. Either a valid string, a function, a matrix, or a data.frame (see help(ggraph::ggraph))
 #' @param size_text a numeric passed to the size argument of function geom_node_text, default 3.5
+#' @param color_text a character passed to the colour argument of function geom_node_text, default "black"
+#' @param color_edges a character passed to the colour argument of function geom_edge_link, default "black"
 
 #' @return  An object of class ggraph::gg onto which layers, scales,
 #'   etc. can be added.
@@ -19,7 +21,7 @@
 #' @export
 #'
 
-plot_graph <- function(G, dat, layout_name = "in_circle", size_text = 3.5){
+plot_graph <- function(G, dat, layout_name = "in_circle", size_text = 3.5, color_text = "black", color_edges = "black"){
 
   variable = NULL
   nodes = NULL
@@ -33,9 +35,9 @@ plot_graph <- function(G, dat, layout_name = "in_circle", size_text = 3.5){
   plot_G <- tbl_graph %>%
     ggraph(layout = layout_name ) +
     # ggraph(layout = 'manual',x = coords$x, y= coords$y, circular= FALSE ) +
-    geom_edge_link() +
+    geom_edge_link(colour = color_edges) +
     geom_node_point(size = 10, aes(colour = variable)) +
-    geom_node_text(aes(label = name), colour = 'black', vjust = 0.4, size = size_text) +
+    geom_node_text(aes(label = name), colour = color_text, vjust = 0.4, size = size_text) +
     theme(legend.position = "bottom")
 
   # + xlim(c(-1.1,1.1))
