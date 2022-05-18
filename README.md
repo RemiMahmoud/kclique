@@ -72,7 +72,7 @@ If we want to look for all the maximal complete factorial design, we
 need to enumerate all the maximal kcliques present in the graph.
 
 ``` r
-kcliques_example <- kclique::maximal_kclique_enumeration(graph_example, data_example)
+kcliques_example <- maximal_kclique_enumeration(graph_example, data_example)
 
 knitr::kable(kcliques_example,col.names = "List of kcliques")
 ```
