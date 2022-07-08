@@ -23,7 +23,7 @@ maximal_kclique_enumeration <- function(G, dat){
   # Pre-allocate the space for the adjacency matrix as output
   partition <- as.list(rep(NA,number_factors))
   for(i in 1:number_factors){
-    temp_rownames <- c(unique(dat[[i]]))
+    temp_rownames <- as.character(c(unique(dat[[i]])))
     adj_matrix_G_with_intrapartite[temp_rownames, temp_rownames] <- 1
     partition[[i]] = temp_rownames
   }
