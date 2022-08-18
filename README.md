@@ -31,18 +31,17 @@ library(kclique)
 
 ``` r
 data("data_example", package ="kclique")
-
 knitr::kable(head(data_example))
 ```
 
-| factor\_A | factor\_B | factor\_C |
-|:----------|:----------|:----------|
-| A02       | B1        | C01       |
-| A15       | B1        | C01       |
-| A04       | B1        | C01       |
-| A01       | B1        | C01       |
-| A11       | B1        | C01       |
-| A13       | B1        | C01       |
+| factor_A | factor_B | factor_C |
+|:---------|:---------|:---------|
+| A02      | B1       | C01      |
+| A15      | B1       | C01      |
+| A04      | B1       | C01      |
+| A01      | B1       | C01      |
+| A11      | B1       | C01      |
+| A13      | B1       | C01      |
 
 As an example, imagine a set of three factors, with various modalities
 and combinations of modalities. You can represent the co-occurence of
@@ -73,7 +72,6 @@ need to enumerate all the maximal kcliques present in the graph.
 
 ``` r
 kcliques_example <- maximal_kclique_enumeration(graph_example, data_example)
-
 knitr::kable(kcliques_example,col.names = "List of kcliques")
 ```
 
@@ -93,21 +91,20 @@ knitr::kable(kcliques_example,col.names = "List of kcliques")
 
 ``` r
 tibble_kclique <- function_list_kcliques_to_tibble(kcliques_example, data_example)
-
 knitr::kable(tibble_kclique)
 ```
 
-| factor\_A                           | factor\_B | factor\_C           |
-|:------------------------------------|:----------|:--------------------|
-| A15-A14-A13-A11-A09-A05-A04-A02-A01 | B1        | C01                 |
-| A14                                 | B1        | C11-C10-C07-C03-C01 |
-| A14-A09                             | B1        | C11-C07-C03-C01     |
-| A05                                 | B1        | C08-C06-C02-C01     |
-| A10-A03                             | B1        | C11-C09-C05         |
-| A14-A10-A09-A03                     | B1        | C11                 |
-| A14-A09-A07                         | B1        | C03                 |
-| A12                                 | B1        | C12-C04             |
-| A08-A06                             | B2        | C01                 |
+| factor_A                            | factor_B | factor_C            |
+|:------------------------------------|:---------|:--------------------|
+| A15-A14-A13-A11-A09-A05-A04-A02-A01 | B1       | C01                 |
+| A14                                 | B1       | C11-C10-C07-C03-C01 |
+| A14-A09                             | B1       | C11-C07-C03-C01     |
+| A05                                 | B1       | C08-C06-C02-C01     |
+| A10-A03                             | B1       | C11-C09-C05         |
+| A14-A10-A09-A03                     | B1       | C11                 |
+| A14-A09-A07                         | B1       | C03                 |
+| A12                                 | B1       | C12-C04             |
+| A08-A06                             | B2       | C01                 |
 
 We identified 9 maximal kcliques, involving various combinations of
 factors’ modalities.

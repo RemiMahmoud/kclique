@@ -63,7 +63,7 @@ knitr::kable(kcliques_example)
 
 # Format kclique in a nice output format
 
-
+## Wide format
 
 ```{r}
 tibble_kclique <- function_list_kcliques_to_tibble(kcliques_example, data_example)
@@ -73,6 +73,17 @@ knitr::kable(tibble_kclique)
 ```
 
 We identified 9 maximal kcliques, involving various combinations of factors' modalities.
+
+## Long format
+
+We can also have a long format for the tibble
+
+```{r}
+tibble_kclique <- function_list_kcliques_to_tibble(kcliques_example, data_example, format = "long")
+
+knitr::kable(head(tibble_kclique))
+
+```
 
 
 

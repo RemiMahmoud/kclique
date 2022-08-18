@@ -4,7 +4,12 @@
 \alias{function_list_kcliques_to_tibble}
 \title{Formatted data from a kclique object}
 \usage{
-function_list_kcliques_to_tibble(kcliques, dat, arrange_by_n_members = TRUE)
+function_list_kcliques_to_tibble(
+  kcliques,
+  dat,
+  arrange_by_n_members = TRUE,
+  format = c("wide", "long")
+)
 }
 \arguments{
 \item{kcliques}{output of maximal_kclique_enumeration function}
@@ -12,6 +17,8 @@ function_list_kcliques_to_tibble(kcliques, dat, arrange_by_n_members = TRUE)
 \item{dat}{a sorted dataset with multiple columns, each column containing each factor composing the k sets of the G. Rows are sorted according to the total members in the kclique}
 
 \item{arrange_by_n_members}{a logical indicating if the data has to be returned arranged by decreasing number of kclique members}
+
+\item{format}{the format of the tibble to be returned; "wide": kclique members are united in one column by factor, separated by a "-" ; "long": kclique members are in a long for (one cell by level and one row by combination of levels)}
 }
 \description{
 Formatted data from a kclique object

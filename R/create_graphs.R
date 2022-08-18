@@ -19,7 +19,7 @@ get_graph_from_dat <- function(dat){
 
 #' @param dat a dataset with multiple columns, each column containing each factor composing the k sets of the G
 #' @import magrittr
-#' @importFrom dplyr distinct select
+#' @importFrom dplyr distinct select mutate across everything
 #' @importFrom igraph graph.edgelist get.adjacency
 #' @importFrom utils combn
 #'
@@ -28,6 +28,19 @@ get_adjacency_matrix_from_dat <- function(dat){
 
 
   # Get features related to the factors
+
+  type_columns <- sapply(dat, class)
+
+  if(any(type_columns == "numeric")){
+    index_numeric <- which(type_columns == "numeric")
+
+    if(length(index_numeric)== 1){
+      warning(paste0("Type of column ", paste(names(type_columns)[index_numeric], collapse = " and "), " is numeric, converting it to character"))
+    } else {
+      warning(paste0("Types of columns ", paste(names(type_columns)[index_numeric], collapse = " and "), " are numeric, converting them to characters"))
+      }
+    dat <- dat %>% mutate(across(everything(), as.character))
+  }
   factors <- colnames(dat)
   number_factors <- length(factors)
   number_modalities_factors <- apply(dat, 2,function(x){length(unique(x))})

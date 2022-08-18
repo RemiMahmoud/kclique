@@ -42,9 +42,7 @@ library(kclique)
 ### Load toy data
 
 ```{r}
-
 data("data_example", package ="kclique")
-
 knitr::kable(head(data_example))
 ```
 
@@ -73,7 +71,6 @@ If we want to look for all the maximal complete factorial design, we need to enu
 
 ```{r}
 kcliques_example <- maximal_kclique_enumeration(graph_example, data_example)
-
 knitr::kable(kcliques_example,col.names = "List of kcliques")
 ```
 
@@ -83,9 +80,7 @@ knitr::kable(kcliques_example,col.names = "List of kcliques")
 
 ```{r}
 tibble_kclique <- function_list_kcliques_to_tibble(kcliques_example, data_example)
-
 knitr::kable(tibble_kclique)
-
 ```
 
 We identified 9 maximal kcliques, involving various combinations of factors' modalities.
@@ -97,11 +92,9 @@ We identified 9 maximal kcliques, involving various combinations of factors' mod
 ```{r}
 plot_kclique_1 <- plot_kclique(G = graph_example, dataset = data_example, tibble_kcliques = tibble_kclique, vector_kcliques = 1)
 plot_kclique_1
-
 plot_kclique_3 <- plot_kclique(G = graph_example, dataset = data_example, tibble_kcliques = tibble_kclique, vector_kcliques = 3)
 plot_kclique_3
 # plot_graph_example
-
 ```
 
 

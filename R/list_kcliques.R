@@ -157,17 +157,43 @@ function_detect_belonging <- function(string_input, dat, sep =";" ){
 #' @param  kcliques output of maximal_kclique_enumeration function
 #' @param dat a sorted dataset with multiple columns, each column containing each factor composing the k sets of the G. Rows are sorted according to the total members in the kclique
 #' @param arrange_by_n_members a logical indicating if the data has to be returned arranged by decreasing number of kclique members
-#' @importFrom  dplyr bind_rows select desc arrange
+#' @param  format the format of the tibble to be returned; "wide": kclique members are united in one column by factor, separated by a "-" ; "long": kclique members are in a long for (one cell by level and one row by combination of levels)
+#' @importFrom  dplyr bind_rows select desc arrange contains pull
+#' @importFrom tidyr pivot_longer separate
 #' @export
 
-function_list_kcliques_to_tibble <- function(kcliques, dat,  arrange_by_n_members = TRUE){
+function_list_kcliques_to_tibble <- function(kcliques, dat,  arrange_by_n_members = TRUE, format = c("wide", "long")){
 
+  format = format[1]
   n <- NULL
+  name <- NULL
 
   tibble_output <-bind_rows(lapply(c(kcliques), function_detect_belonging, dat = dat ))
   tibble_arranged <- function_count_members_from_tibble(tibble_output) %>%
     arrange(desc(n)) %>%
     select(-n)
+
+
+  if(format =="long"){
+    factors <- colnames(dat)
+    number_factors <- length(factors)
+
+    tibble_arranged <- tibble_arranged %>%
+      mutate(kclique_id = as.character(1:n()))
+    for(i in 1:number_factors){
+
+      factor_name = factors[i]
+      n_factor_max <- function_count_members_from_tibble(tibble_arranged, factor_name) %>%
+        pull(n) %>%
+        max
+
+      tibble_arranged <- tibble_arranged %>%
+        separate(factor_name, into = paste0(factor_name,1:n_factor_max), sep = "-", fill = "right") %>%
+        pivot_longer(contains(factor_name), values_to = factor_name, values_drop_na = TRUE) %>%
+        select(-name)
+
+    }
+  }
   return(tibble_arranged)
 }
 
