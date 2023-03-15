@@ -14,7 +14,8 @@ plot_kclique(
   color_edge_kclique = "black",
   color_edge_no_kclique = "grey75",
   layout_name = "in_circle",
-  size_text = 3.5
+  size_text = 3.5,
+  alpha_node = 1
 )
 }
 \arguments{
@@ -37,6 +38,8 @@ plot_kclique(
 \item{layout_name}{The type of layout to create. Either a valid string, a function, a matrix, or a data.frame (see help(ggraph::ggraph))}
 
 \item{size_text}{a numeric passed to the size argument of function geom_node_text, default 3.5}
+
+\item{alpha_node}{a numeric between 0 and 1 giving the level of transparency wanted for the nodes, default 1}
 }
 \value{
 An object of class ggraph::gg onto which layers, scales,

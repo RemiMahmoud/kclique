@@ -10,6 +10,7 @@
 #' @param size_text a numeric passed to the size argument of function geom_node_text, default 3.5
 #' @param color_text a character passed to the colour argument of function geom_node_text, default "black"
 #' @param color_edges a character passed to the colour argument of function geom_edge_link, default "black"
+#' @param alpha_node a numeric between 0 and 1 giving the level of transparency wanted for the nodes, default 1
 
 #' @return  An object of class ggraph::gg onto which layers, scales,
 #'   etc. can be added.
@@ -21,7 +22,7 @@
 #' @export
 #'
 
-plot_graph <- function(G, dat, layout_name = "in_circle", size_text = 3.5, color_text = "black", color_edges = "black"){
+plot_graph <- function(G, dat, layout_name = "in_circle", size_text = 3.5, color_text = "black", color_edges = "black", alpha_node = 1){
 
   variable = NULL
   nodes = NULL
@@ -36,7 +37,7 @@ plot_graph <- function(G, dat, layout_name = "in_circle", size_text = 3.5, color
     ggraph(layout = layout_name ) +
     # ggraph(layout = 'manual',x = coords$x, y= coords$y, circular= FALSE ) +
     geom_edge_link(colour = color_edges) +
-    geom_node_point(size = 10, aes(colour = variable)) +
+    geom_node_point(size = 10, aes(colour = variable), alpha = alpha_node) +
     geom_node_text(aes(label = name), colour = color_text, vjust = 0.4, size = size_text) +
     theme(legend.position = "bottom")
 
@@ -95,7 +96,7 @@ function_assign_node_to_partite <- function(node_names, dat){
 #' @param color_edge_kclique a string indicating the color of the edges members of the kclique
 #' @param color_edge_no_kclique a string indicating the color of the edges that are not members of the kclique
 #' @param size_text a numeric passed to the size argument of function geom_node_text, default 3.5
-#'
+#' @param alpha_node a numeric between 0 and 1 giving the level of transparency wanted for the nodes, default 1
 #'
 
 #' @return  An object of class ggraph::gg onto which layers, scales,
@@ -112,7 +113,7 @@ plot_kclique <- function(G, tibble_kcliques, dataset, vector_kcliques = 1,
                              automatic_nodes = TRUE, show_legend_edges = FALSE,
                              color_edge_kclique = "black", color_edge_no_kclique = "grey75",
                              layout_name = "in_circle",
-                         size_text = 3.5){
+                         size_text = 3.5, alpha_node = 1){
 
   if(length(vector_kcliques) > 1){stop("for now only possible to plot one kclique (i.e provide vector_kcliques of length 1)")}
 
@@ -157,12 +158,12 @@ plot_kclique <- function(G, tibble_kcliques, dataset, vector_kcliques = 1,
 
     if(automatic_nodes){
       plot_kclique <- plot_kclique +
-      geom_node_point(size = 10, aes(color = variable))+
+      geom_node_point(size = 10, aes(color = variable), alpha = alpha_node)+
       geom_node_text(aes(label = name), colour = 'black', vjust = 0.4, size = size_text) +
       theme(legend.position = "bottom")}
     else{
         plot_kclique <- plot_kclique +
-        geom_node_point(size = 10, color = "lightblue")+
+        geom_node_point(size = 10, color = "lightblue", alpha = alpha_node)+
         geom_node_text(aes(label = name), colour = 'black', vjust = 0.4, size = size_text) +
         theme(legend.position = "bottom") }
 

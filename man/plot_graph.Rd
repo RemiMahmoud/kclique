@@ -10,7 +10,8 @@ plot_graph(
   layout_name = "in_circle",
   size_text = 3.5,
   color_text = "black",
-  color_edges = "black"
+  color_edges = "black",
+  alpha_node = 1
 )
 }
 \arguments{
@@ -25,6 +26,8 @@ plot_graph(
 \item{color_text}{a character passed to the colour argument of function geom_node_text, default "black"}
 
 \item{color_edges}{a character passed to the colour argument of function geom_edge_link, default "black"}
+
+\item{alpha_node}{a numeric between 0 and 1 giving the level of transparency wanted for the nodes, default 1}
 }
 \value{
 An object of class ggraph::gg onto which layers, scales,
